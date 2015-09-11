@@ -1,3 +1,3 @@
 # Inside Protractor Locators
 
-by @mbcooper and @amad410
+by @amad410 and @mbcooper
