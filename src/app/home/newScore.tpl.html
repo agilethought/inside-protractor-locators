@@ -1,0 +1,57 @@
+<div>
+    <div class="modal-header">
+        <h4>Add a New Score</h4>
+    </div>
+    <div ng-form="scoreForm"
+         class="modal-body">
+        <div class="form-group">
+            <label for="scoreDate">Date Played</label>
+
+            <p class="input-group">
+                <input
+                       class="form-control"
+                       id="scoreDate"
+                       datepicker-popup
+                       ng-model="edit.score.date"
+                       is-open="edit.opened"
+                       ng-required="true"
+                       close-text="Close"/>
+              <span class="input-group-btn">
+                <button type="button"
+                        class="btn btn-default"
+                        ng-click="edit.openCal($event)">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+              </span>
+            </p>
+        </div>
+        <div class="form-group">
+            <label for="courseSelect">Course</label>
+            <select class="form-control"
+                    id="courseSelect"
+                    ng-required="true"
+                    ng-options="c.id as c.name for c in edit.courses | orderBy: 'date':desc"
+                    ng-model="edit.score.courseId"></select>
+        </div>
+
+        <div class="form-group">
+            <label for="strokesForm">Strokes</label>
+            <input class="form-control"
+                   type="number"
+                   ng-required="true"
+                   id="strokesForm"
+                   ng-model="edit.score.strokes">
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+            <div class="btn-group">
+                <button class="btn btn-warning"
+                        ng-click="edit.cancel()">Cancel</button>
+                <button ng-disabled="scoreForm.$invalid"
+                        class="btn btn-success"
+                        ng-click="edit.save()">Save</button>
+            </div>
+    </div>
+</div>

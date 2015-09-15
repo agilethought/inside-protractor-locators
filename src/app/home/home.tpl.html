@@ -1,0 +1,36 @@
+<div>
+    <div class="row">
+        <h4 class="col-lg-offset-1">Recent Golf Scores</h4>
+
+
+        <div class="col-lg-offset-1 col-lg-6 col-md-offset-1 ">
+            <div ng-show="home.message"
+                 class="alert alert-danger" role="alert">
+                {{home.message}}
+            </div>
+            <button class="btn btn-sm btn-primary pull-right"
+                    ng-click="home.addScore()"
+                    >Add Score
+            </button>
+            <table class="table table-striped table-condensed table-bordered"
+                   ng-show="home.scores.length > 0">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Course</th>
+                    <th>Score</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="score in home.scores">
+                    <td>{{::score.date | date:'MMM-dd-yyyy'}}</td>
+                    <td>{{::score.courseName}}</td>
+                    <td>{{::score.strokes}}</td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+</div>
