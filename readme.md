@@ -65,6 +65,7 @@ by @amad410 and @mbcooper
 * **_by.tagName("{{element tagname}}")_**
 * **_by.xPath("{{xpath}}")_**
 
+### Binding
 	
 
 
