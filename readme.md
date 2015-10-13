@@ -77,5 +77,6 @@ Locators are functions that will help protractor grab the specific element that 
   ```
 
 ## Good Versus Bad Locators
+After developing tests using Protractor for AngularJS webapps, I have found that best protractor locators are:
 
 ## Examples
