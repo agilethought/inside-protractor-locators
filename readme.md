@@ -63,7 +63,7 @@ by @amad410 and @mbcooper
 * **_by.linkText("{{link text}}")_**
 * **_by.name("{{repeating lists}}")_**
 * **_by.tagName("{{element tagname}}")_**
-* **_by.xPath("{{xpath}}")_**
+* **_by.xPath("{{xpath}}")_**  
 
 	
 
