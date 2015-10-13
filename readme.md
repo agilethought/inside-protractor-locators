@@ -63,13 +63,13 @@ by @amad410 and @mbcooper
 * **_by.linkText("{{link text}}")_**
 * **_by.name("{{repeating lists}}")_**
 * **_by.tagName("{{element tagname}}")_**
-* **_by.xPath("{{xpath}}")_**  
+* **_by.xPath("{{xpath}}")_**
 
 	
 
 
 
-* This locator will find an element by its angular binding. 
+This locator will find an element by its angular binding. 
 ```
 <div>{{name}}</div>
 by.binding('name')
