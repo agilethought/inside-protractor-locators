@@ -51,4 +51,5 @@ by @amad410 and @mbcooper
     ```
     gulp
     ```
+## Understanding Locators
   
