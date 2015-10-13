@@ -67,7 +67,7 @@ Locators are functions that will help protractor grab the specific element that 
 * **_by.xPath("{{xpath}}")_**
 
 #### Binding
-  This locator will find an element by its angular binding.  Check out the line of *div* below. It has a name bound to it.   
+  This locator will find an element by its angular binding.  Check out the *div* below. It has a name bound to it.   
   ```
   <div>{{name}}</div>
   ```
