@@ -55,5 +55,9 @@ by @amad410 and @mbcooper
   Locators are functions that will help protractor grab the specific element that you want from an applications DOM.  Every protractor locator is formatted as (by.*), where * is the locator you have chosen to locate the element.  Let's start by looking at some locators:
 
 * **_by.binding("{{status}}")_**  
-	* This locator will find an element by its angular binding.  
+	* This locator will find an element by its angular binding. 
+```
+<div>{{name}}</div>
+by.binding('name')
+'''
   
