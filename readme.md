@@ -51,6 +51,7 @@ by @amad410 and @mbcooper
     ```
     gulp
     ```
+
 ## Understanding Locators
 Locators are functions that will help protractor grab the specific element that you want from an applications DOM.  Every protractor locator is formatted as (by.*), where * is the locator you have chosen to locate the element. Here is a list of the most common locators:
 
