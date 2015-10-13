@@ -64,7 +64,7 @@ Locators are functions that will help protractor grab the specific element that 
 * **_by.linkText("{{link text}}")_**
 * **_by.name("{{repeating lists}}")_**
 * **_by.tagName("{{element tagname}}")_**
-* * **_by.xPath("{{xpath}}")_**
+* **_by.xPath("{{xpath}}")_**
 *
 
 
