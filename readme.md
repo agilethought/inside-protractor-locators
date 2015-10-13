@@ -59,5 +59,5 @@ by @amad410 and @mbcooper
 ```
 <div>{{name}}</div>
 by.binding('name')
-'''
+```
   
