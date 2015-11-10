@@ -70,10 +70,12 @@ Locators are functions that will help protractor grab the specific element that 
   This locator will find an element by its angular binding.  Check out the *div* below. It has a name bound to it.   
   ```
   <div>{{name}}</div>
+  <span ng-bind="person.email"></span>
   ```
   Using the locator, it will take the name and find and return that *div* for you.  
   ```
   by.binding('name');
+  by.binding('person.email');
   ```
 
 ## Good Versus Bad Locators
