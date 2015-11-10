@@ -97,7 +97,7 @@ Locators are functions that will help protractor grab the specific element that 
   by.css('.primary');
   ```
   The _input_ element can be found by first identifying the HTML tag, and then following that up with its attribute enclosed in brackets and attribute value enclosed in quotes as specified below
-     ```
+  ```
   by.css('input[placeholder="Property Address"]');
   ```
   
