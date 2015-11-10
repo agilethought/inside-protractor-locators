@@ -86,8 +86,24 @@ Locators are functions that will help protractor grab the specific element that 
    ```
   by.model('person.name');
   ```
+#### CSS
+  This locator will find an element using a CSS selectors.
+   ```
+  <div class="primary.header">
+  <input placeholder="Property Address">
+  ```
+  The _div_ specified above can be found using the css class selector, where the **.** used to find an element by its css class.  
+   ```
+  by.css('.primary');
+  ```
+  The _input_ element can be found by first identifying the HTML tag, and then following that up with its attribute enclosed in brackets and attribute value enclosed in quotes as specified below
+     ```
+  by.css('input[placeholder="Property Address"]');
+  ```
+  
+  
   
 ## Good Versus Bad Locators
 After developing tests using Protractor for AngularJS webapps, I have found that best protractor locators are:
 
-## Examples
+## Applying This In Real World
