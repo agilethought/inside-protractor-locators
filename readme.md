@@ -100,6 +100,7 @@ Locators are functions that will help protractor grab the specific element that 
   ```
   by.css('input[placeholder="Property Address"]');
   ```
+  I would like to mention there are many other variations of CSS selectors. I often use the _$_ as a shorthanded version of _element(by.css(''))_.
   
   
   
