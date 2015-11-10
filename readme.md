@@ -67,12 +67,12 @@ Locators are functions that will help protractor grab the specific element that 
 * **_by.xPath("{{xpath}}")_**
 
 #### Binding
-  This locator will find an element by its text binding. Any element bound to variables containing the text will be returned.  Check out the <div> and the <span> tags below.  It shows two ways in which a binding description is applied to an element.  
+  This locator will find an element by its text binding. Any element bound to variables containing the text will be returned.  Check out the **div** and the **span** tags below.  It shows two ways in which a binding description is applied to an element.  
   ```
   <div>{{name}}</div>
   <span ng-bind="person.email"></span>
   ```
-  Using the _binding_ locator, it will locate the element based on description and return the <div> and/or <span> for you.  
+  Using the _binding_ locator, it will locate the element based on description and return the **div** and/or **span** for you.  
   ```
   by.binding('name');
   by.binding('person.email');
