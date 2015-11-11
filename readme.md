@@ -141,7 +141,14 @@ Locators are functions that will help protractor grab the specific element that 
   element.all(by.repeater('cat in pets').column('cat.name')
   ```
 #### ID
+  Using IDs is the one of the most common ways to find elements, when there is in fact one for an element. However, this unique identifier is not always there for an element. When you do have an ID, you can perform the following two ways:
+  ```
+  by.id('loginButton')
+  $('#loginButton')
+  ```
+#### LinkText
 
+  
 
 
 
