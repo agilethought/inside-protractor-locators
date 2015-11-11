@@ -212,10 +212,9 @@ Every protractor locator is formatted as (by.*), where * is the locator you have
   </div>
   ```
   If you wanted to find the _div_ tags inside the parent _div_, you could chain the css selectors by specifying both the parent and child tage names. Since there are multiple elements that have the same tag name, it is best to perform the following:
-  ```
-  $('div div').first() 
-  **Gets the very first _div_**
-  ```
+  | $('div div').first() | Gets the very first element in the parent | 
+  
+ 
   
   
 
