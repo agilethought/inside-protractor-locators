@@ -67,7 +67,7 @@ Locators are functions that will help protractor grab the specific element that 
 * **_by.xPath("{{xpath}}")_**
 
 #### Binding
-  This locator will find an element by its text binding. Any element bound to variables containing the text or having an **ng-bind** description will be returned.  Check out the _div_ and the _span_ tags below.  It shows two ways in which a binding description is applied to an element.  
+  This locator will find an element by its text binding. Any element bound to variables containing the text or having an **ng-bind** directive will be returned.  Check out the _div_ and the _span_ tags below.  It shows two ways in which a binding description is applied to an element.  
   ```
   <div>{{name}}</div>
   <span ng-bind="person.email"></span>
@@ -78,7 +78,7 @@ Locators are functions that will help protractor grab the specific element that 
   by.binding('person.email')
   ```
 #### Model
-  This locator will find an element by its **ng-model** angular expression.  
+  This locator will find an element by its **ng-model** angular directive.  
    ```
   <input type="text" ng-model="person.name">
   ```
@@ -119,11 +119,27 @@ Locators are functions that will help protractor grab the specific element that 
   by.buttonText('Save')
   ```
 #### Repeater
-  This locator helps us find elements inside an **ng-repeat** angular expression.
-  
-  
-  
-  
+  This locator helps us find elements inside an **ng-repeat** angular directive.  This directive clones HTML elements once for each item in a collection (in an array).
+  ```
+  <div ng-repeat="cat in pets">
+  <span>{{cat.name}}</span>
+  <span>{{cat.age}}</span>
+  </div>
+  ```
+  Using _repeater_ locator, we can find an array of elements inside the repeater
+  ```
+  by.repeater('cat in pets')
+  ```
+  Or we can narrow down our choice within the collection elements by either column or row. Here are the different permutations:
+  ```
+  by.repeater('cat in pets').column('cat.name')
+  by.repeater('cat in pets').row(1)
+  by.repeater('cat in pets').row(0).column('cat.name')
+  ```
+  Keep in mind that the first example will returns a promise that resolves to an array of WebElements from a column.  In essence, you will get the collection.  Therefore, it is necessary that you store the elements that you get back as a collection like so:
+  ```
+  element.all(by.repeater('cat in pets').column('cat.name')
+  ```
   
 ## Good Versus Bad Locators
 After developing tests using Protractor for AngularJS webapps, I have found that best protractor locators are:
