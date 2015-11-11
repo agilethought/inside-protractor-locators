@@ -67,6 +67,7 @@ Every protractor locator is formatted as (by.*), where * is the locator you have
 * **_by.name("{{repeating lists}}")_**
 * **_by.tagName("{{element tagname}}")_**
 * **_by.xPath("{{xpath}}")_**
+* **_Other Examples_**
 
 #### Binding
   This locator will find an element by its text binding. Any element bound to variables containing the text or having an **ng-bind** angular directive will be returned.  Check out the _div_ and the _span_ tags below.  It shows two ways in which a binding description is applied to an element.  
@@ -111,6 +112,15 @@ Every protractor locator is formatted as (by.*), where * is the locator you have
   $('#someid');
   *('.class');
   ```
+  Lastly, you can find elements based on css matching some text.  
+  ```
+  <li class="pet">Dog</li>
+  ```
+  ```
+  by.cssContainingText('.pet', 'Dog'))
+  ```
+  The example shows how you can find an element based on its css class matching the text 'Dog.'
+  
 #### ButtonText
   This locator will find a button element based on its text.  
   ```
