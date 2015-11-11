@@ -169,8 +169,30 @@ Every protractor locator is formatted as (by.*), where * is the locator you have
   ```
   by.name('myForm')
   ```
+#### TagName
+  This is another common locator, which finds an element based on its tag (a, h2, input, button, etc.).
+  ```
+  <h2>Hello</h2>
+  ```
+  ```
+  by.tagName('h2')
+  ```
+#### xPath
+  This locator is not used all that often.  The reason being is that for new development you cannot rely on the exact location of an element in the DOM.  It would make more sense to use this locator when the application is stable and mature. However, it is not recommended to use this locator.  What sets Protractor apart from other automation tools are the powerful locators, other than xPath, that have been provided to you to find elements within an Angular application. On other hand, if you want to find an element by xPath you can. 
+  ```
+  <div id="numDispBox" ng-mouseleave="hideNumDisplayBox()" style="display: none;">
+  	<div class="numDispOption transition_2" ng-click="UpdateNbResultPerNode(20)">20</div>
+  	<div class="numDispOption transition_2" ng-click="UpdateNbResultPerNode(40)">40</div>
+  	<div class="numDispOption transition_2" ng-click="UpdateNbResultPerNode(60)">60</div>
+  	<div class="numDispOption transition_2" ng-click="UpdateNbResultPerNode(80)">80</div>
+  </div>
+  ```
+  To find the third child div under the parent, you can perform the folllowing by referencing its text in xPath:
+  ```
+  by.xPath("//div[text()='60']")
+  ```
   
-
+  
 
 
 
