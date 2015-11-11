@@ -53,7 +53,9 @@ by @amad410 and @mbcooper
     ```
 
 ## Understanding Locators
-Locators are functions that will help protractor grab the specific element that you want from an applications DOM.  Every protractor locator is formatted as (by.*), where * is the locator you have chosen to locate the element. Here is a list of the most common locators:
+Locators are functions that will help protractor grab the specific element that you want from an applications DOM.  By now, you might have already started sifting through numerous sites on protractor locators.  You might have also experimented with them and discovered that the documentation out there for locators are either outdated due to new protractor versions or various implementations for what you are trying to achieve just do not work. We are going dive into what locators do and do not work, depending upon what you are trying to do. Last, we will show some real world examples.   Before we get started on those topics, let's start off describing the different types of locators.  
+
+Every protractor locator is formatted as (by.*), where * is the locator you have chosen to locate the element. Here is a list of the most common locators:
 
 * **_by.binding("{{status}}")_**
 * **_by.model("{{ng-model parameter}}")_**
