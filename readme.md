@@ -215,7 +215,9 @@ Every protractor locator is formatted as (by.*), where * is the locator you have
   
   Locator | Description |
 --- | --- | ---
-$('div div').first() | Gets the very first element in the parent |
+$('div div').first() | Selects first of children |
+$('div div').last() | Selects last of children | 
+$('div div').get(index) | Selects index-th of children | 
 
 
   
