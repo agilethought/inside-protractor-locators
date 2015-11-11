@@ -67,7 +67,7 @@ Every protractor locator is formatted as (by.*), where * is the locator you have
 * **_by.name("{{repeating lists}}")_**
 * **_by.tagName("{{element tagname}}")_**
 * **_by.xPath("{{xpath}}")_**
-* **Other Examples**
+* **Finding Child Elements**
 
 #### Binding
   This locator will find an element by its text binding. Any element bound to variables containing the text or having an **ng-bind** angular directive will be returned.  Check out the _div_ and the _span_ tags below.  It shows two ways in which a binding description is applied to an element.  
@@ -200,6 +200,21 @@ Every protractor locator is formatted as (by.*), where * is the locator you have
   To find the third child div under the parent, you can perform the folllowing by referencing its text in xPath:
   ```
   by.xPath("//div[text()='60']")
+  ```
+#### Finding Child Elements
+  Lastly, lets look at some other ways to find elements.  You may want to find certain elements within a parent element. For example, take a look at the code below:
+   ```
+  <div id="numDispBox" ng-mouseleave="hideNumDisplayBox()" style="display: none;">
+  	<div class="numDispOption transition_2" ng-click="UpdateNbResultPerNode(20)">20</div>
+  	<div class="numDispOption transition_2" ng-click="UpdateNbResultPerNode(40)">40</div>
+  	<div class="numDispOption transition_2" ng-click="UpdateNbResultPerNode(60)">60</div>
+  	<div class="numDispOption transition_2" ng-click="UpdateNbResultPerNode(80)">80</div>
+  </div>
+  ```
+  If you wanted to find the _div_ tags inside the parent _div_, you could chain the css selectors by specifying both the parent and child tage names. Since there are multiple elements that have the same tag name, it is best to perform the following:
+  ```
+  $('div div').first() 
+  **Gets the very first _div_**
   ```
   
   
