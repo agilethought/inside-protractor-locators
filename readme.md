@@ -160,9 +160,16 @@ Every protractor locator is formatted as (by.*), where * is the locator you have
   by.linkText('This is a link')
   by.partialLinkText('link')
   ```
-  Once again, the latter example find a link that matches some partial text.  
+  Once again, the latter example finds a link that matches some partial text.  
 #### Name
-
+  This locator finds an element based on its name.  
+  ```
+  <form name=myform>
+  ```
+  ```
+  by.name('myForm')
+  ```
+  
 
 
 
