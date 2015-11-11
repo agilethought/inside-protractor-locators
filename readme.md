@@ -78,7 +78,7 @@ Locators are functions that will help protractor grab the specific element that 
   by.binding('person.email')
   ```
 #### Model
-  This locator will find an element by its **ng-model** expression.  
+  This locator will find an element by its **ng-model** angular expression.  
    ```
   <input type="text" ng-model="person.name">
   ```
@@ -87,7 +87,7 @@ Locators are functions that will help protractor grab the specific element that 
   by.model('person.name')
   ```
 #### CSS
-  This locator will find an element using a CSS selectors.
+  This locator will find an element using CSS selectors.
    ```
   <div class="primary.header">
   <input placeholder="Property Address">
@@ -118,6 +118,10 @@ Locators are functions that will help protractor grab the specific element that 
    ```
   by.buttonText('Save')
   ```
+#### Repeater
+  This locator helps us find elements inside an **ng-repeat** angular expression.
+  
+  
   
   
   
