@@ -96,12 +96,21 @@ Locators are functions that will help protractor grab the specific element that 
    ```
   by.css('.primary');
   ```
-  The _input_ element can be found by first identifying the HTML tag, and then following that up with its attribute enclosed in brackets and attribute value enclosed in quotes as specified below
+  The _input_ element can be found by first identifying the HTML tag, and then following that up with its attribute enclosed in brackets and attribute value enclosed in quotes as specified below:
   ```
   by.css('input[placeholder="Property Address"]');
   ```
-  I would like to mention there are many other variations of CSS selectors. I often use the _$_ as a shorthanded version of _element(by.css(''))_.
+  I would like to mention there are many other variations of CSS selectors. I often use the _$_ as a shorthanded version of _element(by.css(''))_.  Using this variation of the locator, I can search for the same element by performing the following:
+   ```
+  $('input[placeholder="Property Address"]');
+  ```
+  or search for an element by its ID or class
+   ```
+  $('#someid');
+  *('.class');
+  ```
   
+
   
   
 ## Good Versus Bad Locators
