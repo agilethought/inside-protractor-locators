@@ -75,7 +75,7 @@ Locators are functions that will help protractor grab the specific element that 
   Using the _binding_ locator, it will locate the element based on description and return the _div_ and/or _span_ for you.  
   ```
   by.binding('name');
-  by.binding('person.email');
+  by.binding('person.email')
   ```
 #### Model
   This locator will find an element by its **ng-model** expression.  
@@ -84,7 +84,7 @@ Locators are functions that will help protractor grab the specific element that 
   ```
   Finding an element by its model is the most common locator.  Finding an element based on a decription that binds it to the data it represents is as easy as
    ```
-  by.model('person.name');
+  by.model('person.name')
   ```
 #### CSS
   This locator will find an element using a CSS selectors.
@@ -94,15 +94,15 @@ Locators are functions that will help protractor grab the specific element that 
   ```
   The _div_ specified above can be found using the css class selector, where the **.** used to find an element by its css class.  
    ```
-  by.css('.primary');
+  by.css('.primary')
   ```
   The _input_ element can be found by first identifying the HTML tag, and then following that up with its attribute enclosed in brackets and attribute value enclosed in quotes as specified below:
   ```
-  by.css('input[placeholder="Property Address"]');
+  by.css('input[placeholder="Property Address"]')
   ```
   I would like to mention there are many other variations of CSS selectors. I often use the _$_ as a shorthanded version of _element(by.css(''))_.  Using this variation of the locator, I can search for the same element by performing the following:
    ```
-  $('input[placeholder="Property Address"]');
+  $('input[placeholder="Property Address"]')
   ```
   or search for an element by its ID or class
    ```
@@ -110,7 +110,15 @@ Locators are functions that will help protractor grab the specific element that 
   *('.class');
   ```
 #### ButtonText
-
+  This locator will find a button element based on its text.  
+  ```
+  <button>Save</button>
+  ```
+  As you can see above, the button has the text 'Save.'  We can find this element by performing the following:
+   ```
+  by.buttonText('Save')
+  ```
+  
   
   
 ## Good Versus Bad Locators
