@@ -69,7 +69,7 @@ Every protractor locator is formatted as (by.*), where * is the locator you have
 * **_by.xPath("{{xpath}}")_**
 
 #### Binding
-  This locator will find an element by its text binding. Any element bound to variables containing the text or having an **ng-bind** directive will be returned.  Check out the _div_ and the _span_ tags below.  It shows two ways in which a binding description is applied to an element.  
+  This locator will find an element by its text binding. Any element bound to variables containing the text or having an **ng-bind** angular directive will be returned.  Check out the _div_ and the _span_ tags below.  It shows two ways in which a binding description is applied to an element.  
   ```
   <div>{{name}}</div>
   <span ng-bind="person.email"></span>
@@ -115,11 +115,14 @@ Every protractor locator is formatted as (by.*), where * is the locator you have
   This locator will find a button element based on its text.  
   ```
   <button>Save</button>
+  <button>Go To Next Page</button>
   ```
-  As you can see above, the button has the text 'Save.'  We can find this element by performing the following:
+  As you can see above, the two buttons have the text 'Save' and 'Go To Next Page.'  We can find these elements by performing the following:
    ```
   by.buttonText('Save')
+  by.partialButtonText('Next')
   ```
+  The latter example finds a button that matches some partial text.  
 #### Repeater
   This locator helps us find elements inside an **ng-repeat** angular directive.  This directive clones HTML elements once for each item in a collection (in an array).
   ```
@@ -149,8 +152,19 @@ Every protractor locator is formatted as (by.*), where * is the locator you have
   $('#loginButton')
   ```
 #### LinkText
+  For all links, you can use this locator to find those that match targeted text.  
+  ```
+  <a href="default.asp" target="_blank">This is a link</a>
+  ```
+  ```
+  by.linkText('This is a link')
+  by.partialLinkText('link')
+  ```
+  Once again, the latter example find a link that matches some partial text.  
+#### Name
 
-  
+
+
 
 
 
