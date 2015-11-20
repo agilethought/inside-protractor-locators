@@ -64,7 +64,7 @@ Every protractor locator is formatted as (by.*), where * is the locator you have
 * **_by.repeater("{{repeating lists}}")_**
 * **_by.id("{{element ID}}")_**
 * **_by.linkText("{{link text}}")_**
-* **_by.name("{{repeating lists}}")_**
+* **_by.name("{{element name}}")_**
 * **_by.tagName("{{element tagname}}")_**
 * **_by.xPath("{{xpath}}")_**
 * **Finding Child Elements**
