@@ -232,3 +232,4 @@ $('div div').get(index) | Selects index-th of children |
 After developing tests using Protractor for AngularJS webapps, I have found that best protractor locators are:
 
 ## Applying This In Real World
+Now, lets dive into some examples of how to use locators from a practical and real-world standpoint.  Go to the [Protractor Example project] (https://github.com/mbcooper/ProtractorExample), clone the repo, and launch the example application. 
