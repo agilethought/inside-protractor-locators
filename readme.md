@@ -226,6 +226,7 @@ After developing tests using Protractor for AngularJS webapps, I have found that
 By now, you are probably excited that you have found a one-stop shop on protractor locators.  There are many sites out there that list different implementation of using locators, but they are not as thorough or up to date.  In addition, not all examples are practical.  The focus of this section will be in using protractor locators to find elements in a real-world application. Go to the [Protractor Example project] (https://github.com/mbcooper/ProtractorExample), clone the repo, and launch the example application.  
 
 This is a very simple application that has a seach box, which accepts only two valid terms as inputs: **Trees** and **Food**.  The user is able to search these terms and return results by entering them into the search box, and clicking the search button. Results will be displayed in a table below the search.  For the purpose of applying protractor locators, we are going to check the following:
+
 1. Verify that certain fields exist on the page
 2. Verify we receive results back from searching with the term **Trees**
 3. Verify we receive results back from searching with the term **Food**
