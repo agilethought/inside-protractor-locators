@@ -232,4 +232,6 @@ $('div div').get(index) | Selects index-th of children |
 After developing tests using Protractor for AngularJS webapps, I have found that best protractor locators are:
 
 ## Applying This In Real World
-By now, you are probably excited that you have found a one stop shop on protractor locators.  There are many sites out there that list protractor locators, but some are not as thorough or up to date.  In addition, not all examples are practical.  In this section, we are going to jump into some examples of using protractor locators to find elements in a real-world application. Go to the [Protractor Example project] (https://github.com/mbcooper/ProtractorExample), clone the repo, and launch the example application.   
+By now, you are probably excited that you have found a one-stop shop on protractor locators.  There are many sites out there that list different implementation of using locators, but they are not as thorough or up to date.  In addition, not all examples are practical.  The focus of this section will be in using protractor locators to find elements in a real-world application. Go to the [Protractor Example project] (https://github.com/mbcooper/ProtractorExample), clone the repo, and launch the example application.  
+
+This is a very simple application that has a seach box, which accepts only two valid terms as inputs: *Trees* and *Food*.  
