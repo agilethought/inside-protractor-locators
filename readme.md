@@ -231,18 +231,30 @@ This is a very simple application that has a seach box, which accepts only two v
 
 ![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/Search.PNG "Search")
 
-![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/Search2.PNG "Search")
+![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/Search2.PNG "Search Term")
 
 Validations are also performed, based on simple rules, to handle invalid searches. The terms searched for must have alpha characters only, and must be no more than 10 characters.  
 
-![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/Search3.PNG "Search")
+![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/Search3.PNG "Invalid Search")
 
 For the purpose of applying protractor locators, we are going to check the following:
 
-1. Verify that certain fields exist on the page
+1. Verify that certain elements exist on the page
 2. Verify we receive results back from searching with the term **Trees**
 3. Verify we receive results back from searching with the term **Food**
 4. Verify we received validations when providing invalid inputs into the search box
+
+#### Verify that certain elements exist on the page
+
+  Let's examine the DOM for the search box.  
+
+  ![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/SearchInspection.PNG "Inspect Search box")
+
+  From the image above we can visually see that element has an input tag.  Since we are using protractor locators we need to find an angular directive that we can use. In this case, we can find an element by its **ng-model** angular directive within the input tag.  
+  ```
+  <input type="text" class="form-control inline ng-pristine ng-valid ng-valid-pattern ng-valid-minlength ng-valid-maxlength ng-touched" name="searchTerm" ng-minlength="1" ng-maxlength="10" ng-pattern="/^[a-zA-Z0-9]*$/" ng-model="home.search" id="searchTerm" placeholder="Food or trees">
+  ```
+
 
 
 
