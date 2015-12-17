@@ -230,6 +230,7 @@ By now, you are probably excited that you have found a one-stop shop on protract
 This is a very simple application that has a seach box, which accepts only two valid terms as inputs: **Trees** and **Food**.  The user is able to search these terms and return results by entering them into the search box, and clicking the search button. Results will be displayed in a table below the search.    
 
 ![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/Search.PNG "Search")
+
 ![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/Search2.PNG "Search")
 
 Validations are also performed, based on simple rules, to handle invalid searches. The terms searched for must have alpha characters only, and must be no more than 10 characters.  
