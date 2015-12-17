@@ -234,6 +234,7 @@ This is a very simple application that has a seach box, which accepts only two v
 ![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/Search2.PNG "Search")
 
 Validations are also performed, based on simple rules, to handle invalid searches. The terms searched for must have alpha characters only, and must be no more than 10 characters.  
+
 ![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/Search3.PNG "Search")
 
 For the purpose of applying protractor locators, we are going to check the following:
