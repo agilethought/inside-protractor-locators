@@ -227,11 +227,55 @@ Stil TBD
 ## Applying This In Real World
 By now, you are probably excited that you have found a one-stop shop on protractor locators.  There are many sites out there that list different implementation of using locators, but they are not as thorough or up to date.  In addition, not all examples are practical.  The focus of this section will be in using protractor locators to find elements in a real-world application. Go to the [Protractor Example project] (https://github.com/mbcooper/ProtractorExample), clone the repo, and launch the example application.  
 
-This is a very simple application that has a seach box, which accepts only two valid terms as inputs: **Trees** and **Food**.  The user is able to search these terms and return results by entering them into the search box, and clicking the search button. Results will be displayed in a table below the search.  For the purpose of applying protractor locators, we are going to check the following:
+This is a very simple application that has a seach box, which accepts only two valid terms as inputs: **Trees** and **Food**.  The user is able to search these terms and return results by entering them into the search box, and clicking the search button. Results will be displayed in a table below the search.    
 
-1. Verify that certain fields exist on the page
+![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/Search.PNG "Search")
+
+![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/Search2.PNG "Search Term")
+
+Validations are also performed, based on simple rules, to handle invalid searches. The terms searched for must have alpha characters only, and must be no more than 10 characters.  
+
+![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/Search3.PNG "Invalid Search")
+
+For the purpose of applying protractor locators, we are going to check the following:
+
+1. Verify that certain elements are presented on the page
 2. Verify we receive results back from searching with the term **Trees**
 3. Verify we receive results back from searching with the term **Food**
+4. Verify we received validations when providing invalid inputs into the search box
+
+#### Verify that certain elements are presented on the page
+
+  Let's examine the DOM for the search box.  
+
+  ![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/SearchInspection.PNG "Inspect Search box")
+
+  From the image above we can visually see that element has an input tag.  Since we are using protractor locators we need to find an angular directive that we can use. In this case, we can find an element by its **ng-model** angular directive within the input tag.  
+  ```
+  <input type="text" class="form-control inline ng-pristine ng-valid ng-valid-pattern ng-valid-minlength ng-valid-maxlength ng-touched" name="searchTerm" ng-minlength="1" ng-maxlength="10" ng-pattern="/^[a-zA-Z0-9]*$/" ng-model="home.search" id="searchTerm" placeholder="Food or trees">
+  ```
+Therefore, we can write a test in our spec to validate that this element is presented
+```
+ it('should have a back button', function() {
+    var searchBox = element(by.model('home.search'));
+    expect(searchBox.isPresent()).toBe(true);
+  });
+  ```
+  Alternatively, we can find this element by id or by css:
+  ```
+  it('should have a back button', function() {
+    var searchBox = element(by.id('searchTerm'));
+    expect(searchBox.isPresent()).toBe(true);
+  });
+  ```
+  
+  ```
+  it('should have a back button', function() {
+    var searchBox = element(by.css('[placeholder="Food or trees"]'))
+    expect(searchBox.isPresent()).toBe(true);
+  });
+  ```
+
 
 
 
