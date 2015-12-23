@@ -229,13 +229,13 @@ By now, you are probably excited that you have found a one-stop shop on protract
 
 This is a very simple application that has a seach box, which accepts only two valid terms as inputs: **Trees** and **Food**.  The user is able to search these terms and return results by entering them into the search box, and clicking the search button. Results will be displayed in a table below the search.    
 
-![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/Search.PNG "Search")
+![Image of Search](docImages/Search.PNG "Search")
 
-![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/Search2.PNG "Search Term")
+![Image of Search](docImages/Search2.PNG "Search Term")
 
 Validations are also performed, based on simple rules, to handle invalid searches. The terms searched for must have alpha characters only, and must be no more than 10 characters.  
 
-![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/Search3.PNG "Invalid Search")
+![Image of Search](docImages/Search3.PNG "Invalid Search")
 
 For the purpose of applying protractor locators, we are going to check the following:
 
@@ -248,7 +248,7 @@ For the purpose of applying protractor locators, we are going to check the follo
 
   Let's examine the DOM for the search box.  
 
-  ![Image of Search](https://raw.githubusercontent.com/agilethought/inside-protractor-locators/tree/master/docImages/SearchInspection.PNG "Inspect Search box")
+  ![Image of Search](docImages/SearchInspection.PNG "Inspect Search box")
 
   From the image above we can visually see that element has an input tag.  Since we are using protractor locators we need to find an angular directive that we can use. In this case, we can find an element by its **ng-model** angular directive within the input tag.  
   ```
