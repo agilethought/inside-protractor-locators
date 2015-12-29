@@ -246,7 +246,7 @@ For the purpose of applying protractor locators, we are going to check the follo
 #### Verify that certain elements are presented on the page
 ##### Reading DOM Elements
 
-   Section titled 'Home.po.js - Our Page Object' in the [Protractor Example](https://github.com/mbcooper/ProtractorExample).  A page object is a design pattern for creating an object repository for UI elements.  Under this design pattern, each web page has a corresponding page class which identifies elements and their properties, methods, and the available operations that can be performed by the elements.  We will be creating elements and methods to interact with the elements inside its corresponding page object class **Home.po.js.**.  Let's examine the DOM for the search box.  
+   See section titled 'Home.po.js - Our Page Object' in the [Protractor Example](https://github.com/mbcooper/ProtractorExample).  A page object is a design pattern for creating an object repository for UI elements.  Under this design pattern, each web page has a corresponding page class which identifies elements and their properties, methods, and the available operations that can be performed by the elements.  We will be creating elements and methods to interact with the elements inside its corresponding page object class **Home.po.js.**.  Let's examine the DOM for the search box.  
 
   ![Image of Search](docImages/SearchInspection.PNG "Inspect Search box")
 
