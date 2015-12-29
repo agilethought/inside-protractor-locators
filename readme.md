@@ -240,9 +240,8 @@ Validations are also performed, based on simple rules, to handle invalid searche
 For the purpose of applying protractor locators, we are going to check the following:
 
 1. Verify that certain elements are presented on the page
-2. Verify we receive results back from searching with the term **Trees**
-3. Verify we receive results back from searching with the term **Food**
-4. Verify we received validations when providing invalid inputs into the search box
+2. Verify we receive results back from searching with valid terms
+3. Verify we received validations when providing invalid inputs into the search box
 
 #### Verify that certain elements are presented on the page
 ##### Reading DOM Elements
@@ -259,7 +258,7 @@ Therefore, we can write the code to identify the search box in the page object c
 ```
 searchBox: {
     get: function() {
-      return element(by.model('home.search'))
+      return element(by.model('home.search'));
     }
   },
 ```
@@ -267,32 +266,57 @@ searchBox: {
 ```
 searchBox: {
     get: function() {
-      return element(by.id('searchTerm'))
+      return element(by.id('searchTerm'));
     }
   },
 ```
 ```
 searchBox: {
     get: function() {
-      return element(by.name('searchTerm'))
+      return element(by.name('searchTerm'));
     }
   },
 ```
 ```
 searchBox: {
     get: function() {
-      return element(by.css('[placeholder="Food or trees"]'))
+      return element(by.css('[placeholder="Food or trees"]'));
+    }
+  },
+```
+  Let's examine the DOM for the search button.  
+
+  ![Image of Search](docImages/SearchButtonInspection.PNG "Inspect Search button")
+
+From the image above we can visually see that the search button element has an button tag that does not contain an **ng-model** angular directive.  Therefore, we need to find other locators for which to identify this element.  What we do see is that there is an **id** and **ng-click** css attribute.  Therefore, we can identify the search button element two different ways in our page object:
+```
+searchButton: {
+    get: function() {
+      return element(by.id('searchButton'));
+    }
+  },
+```
+```
+searchButton: {
+    get: function() {
+      return element(by.css('[ng-click="home.makeSearch()"]'));
     }
   },
 ```
 ##### Tests that DOM elements are present
- We can then write a test in our spec to validate that this element is presented
+ We can now write tests in our spec to validate that these elements are presented
 ```
  it('should have a search box', function() {
-    var searchBox = element(by.model('home.search'));
-    expect(searchBox.isPresent()).toBe(true);
-  });
-  ```
-
+      var searchBox = homePage.searchBox;
+      expect(searchBox.isPresent()).toBe(true);
+    });
+```
+```
+ it('should have a search button', function() {
+      var searchButton = homePage.searchButton;
+      expect(searchButton.isPresent()).toBe(true);
+    });
+```
+#### Verify we receive results back from searching with valid terms
 
 
