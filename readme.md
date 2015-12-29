@@ -256,22 +256,27 @@ For the purpose of applying protractor locators, we are going to check the follo
   ```
 Therefore, we can write a test in our spec to validate that this element is presented
 ```
- it('should have a back button', function() {
+ it('should have a search box', function() {
     var searchBox = element(by.model('home.search'));
     expect(searchBox.isPresent()).toBe(true);
   });
   ```
-  Alternatively, we can find this element by id or by css:
+  Alternatively, we can find this element by id, name, or by css:
   ```
-  it('should have a back button', function() {
+  it('should have a search box', function() {
     var searchBox = element(by.id('searchTerm'));
     expect(searchBox.isPresent()).toBe(true);
   });
   ```
-  
   ```
-  it('should have a back button', function() {
-    var searchBox = element(by.css('[placeholder="Food or trees"]'))
+  it('should have a search box', function() {
+    var searchBox = element(by.name('searchTerm'));
+    expect(searchBox.isPresent()).toBe(true);
+  });
+  ```
+  ```
+  it('should have a search box', function() {
+    var searchBox = element(by.css('[placeholder="Food or trees"]'));
     expect(searchBox.isPresent()).toBe(true);
   });
   ```
