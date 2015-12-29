@@ -322,7 +322,7 @@ searchButton: {
 
   As mentioned earlier, the application is design to accept only two valid terms as inputs: **Trees** and **Food**.  When the user searches one of these terms, the application will return results in a table below the search.  The main purpose of our next set of tests is to get the results of searching the valid terms.  As a set of prerequisites, we need to first input the valid term into the search box, and then click the search button to get the results. The framework designed for the Protractor Example has already provided you with the operations to accomplish this.  Let's look at these operation in the page object class.  
   
-  Since we already have identified the searchBox and searchButton, we can use these elements to perform operations on them. To provide input into the searchBox, we have constructed the *enterSearch()* method to return the operation of sending a text value parameter to the element.  
+  Since we already have identified the searchBox and searchButton objects in the page object class, we can use these objects to perform operations on them. To provide input into the searchBox, we have constructed the *enterSearch()* method to return the operation of sending a text value parameter to the element.  
 ```
 enterSearch: {
     value: function(keys) {
@@ -338,7 +338,16 @@ clickSearch: {
     }
   },
 ```
-
+  Now, lets create a test that searches a valid return and gets results by using the method operation provided to you so far.  
+```
+it('should search for food and get answers', function() {
+      var term = 'food';
+      homePage.enterSearch(term);
+      homePage.clickSearch();
+    }
+  );
+......
+```
   
   
 
