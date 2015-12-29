@@ -245,42 +245,54 @@ For the purpose of applying protractor locators, we are going to check the follo
 4. Verify we received validations when providing invalid inputs into the search box
 
 #### Verify that certain elements are presented on the page
+##### Reading DOM Elements
 
-  Let's examine the DOM for the search box.  
+   Section titled 'Home.po.js - Our Page Object' in the [Protractor Example](https://github.com/mbcooper/ProtractorExample).  A page object is a design pattern for creating an object repository for UI elements.  Under this design pattern, each web page has a corresponding page class which identifies elements and their properties, methods, and the available operations that can be performed by the elements.  We will be creating elements and methods to interact with the elements inside its corresponding page object class **Home.po.js.**.  Let's examine the DOM for the search box.  
 
   ![Image of Search](docImages/SearchInspection.PNG "Inspect Search box")
 
-  From the image above we can visually see that element has an input tag.  Since we are using protractor locators we need to find an angular directive that we can use. In this case, we can find an element by its **ng-model** angular directive within the input tag.  
+  From the image above we can visually see that the search box element has an input tag.  Since we are using protractor locators we need to find an angular directive that we can use. In this case, we can find an element by its **ng-model** angular directive within the input tag.  
   ```
   <input type="text" class="form-control inline ng-pristine ng-valid ng-valid-pattern ng-valid-minlength ng-valid-maxlength ng-touched" name="searchTerm" ng-minlength="1" ng-maxlength="10" ng-pattern="/^[a-zA-Z0-9]*$/" ng-model="home.search" id="searchTerm" placeholder="Food or trees">
   ```
-Therefore, we can write a test in our spec to validate that this element is presented
+Therefore, we can write the code to identify the search box in the page object class **Home.po.js.** as: 
+```
+searchBox: {
+    get: function() {
+      return element(by.model('home.search'))
+    }
+  },
+```
+ Alternatively, we can find this element by id, name, or by css:
+```
+searchBox: {
+    get: function() {
+      return element(by.id('searchTerm'))
+    }
+  },
+```
+```
+searchBox: {
+    get: function() {
+      return element(by.name('searchTerm'))
+    }
+  },
+```
+```
+searchBox: {
+    get: function() {
+      return element(by.css('[placeholder="Food or trees"]'))
+    }
+  },
+```
+##### Tests that DOM elements are present
+ We can then write a test in our spec to validate that this element is presented
 ```
  it('should have a search box', function() {
     var searchBox = element(by.model('home.search'));
     expect(searchBox.isPresent()).toBe(true);
   });
   ```
-  Alternatively, we can find this element by id, name, or by css:
-  ```
-  it('should have a search box', function() {
-    var searchBox = element(by.id('searchTerm'));
-    expect(searchBox.isPresent()).toBe(true);
-  });
-  ```
-  ```
-  it('should have a search box', function() {
-    var searchBox = element(by.name('searchTerm'));
-    expect(searchBox.isPresent()).toBe(true);
-  });
-  ```
-  ```
-  it('should have a search box', function() {
-    var searchBox = element(by.css('[placeholder="Food or trees"]'));
-    expect(searchBox.isPresent()).toBe(true);
-  });
-  ```
-
 
 
 
