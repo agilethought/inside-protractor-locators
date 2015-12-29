@@ -363,7 +363,7 @@ allResults: {
     }
   },
 ```
-Using this object we can expand our test to assert whether results are empty or not.
+Using this object we can expand our test to assert whether results are not empty.
 
 ```
 it('should search for food and get answers', function() {
