@@ -288,7 +288,7 @@ searchBox: {
 
   ![Image of Search](docImages/SearchButtonInspection.PNG "Inspect Search button")
 
-From the image above we can visually see that the search button element has an button tag that does not contain an **ng-model** angular directive.  Therefore, we need to find other locators for which to identify this element.  What we do see is that there is an **id** and **ng-click** css attribute.  Therefore, we can identify the search button element two different ways in our page object:
+From the image above we can visually see that the search button element has a button tag that does not contain an **ng-model** angular directive.  Therefore, we need to find other locators for which to identify this element.  What we do see is that there is an **id** and **ng-click** css attribute.  Therefore, we can identify the search button element using either one of the locators in our page object:
 ```
 searchButton: {
     get: function() {
