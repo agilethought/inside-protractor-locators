@@ -240,42 +240,142 @@ Validations are also performed, based on simple rules, to handle invalid searche
 For the purpose of applying protractor locators, we are going to check the following:
 
 1. Verify that certain elements are presented on the page
-2. Verify we receive results back from searching with the term **Trees**
-3. Verify we receive results back from searching with the term **Food**
-4. Verify we received validations when providing invalid inputs into the search box
+2. Validate we receive results back from searching with valid terms
+3. Validate we received validations when providing invalid inputs into the search box
 
 #### Verify that certain elements are presented on the page
+##### Reading DOM Elements
 
-  Let's examine the DOM for the search box.  
+   See section titled 'Home.po.js - Our Page Object' in the [Protractor Example](https://github.com/mbcooper/ProtractorExample).  A page object is a design pattern for creating an object repository for UI elements.  Under this design pattern, each web page has a corresponding page class which identifies elements and their properties, methods, and the available operations that can be performed by the elements.  We will be creating elements and methods to interact with the elements inside its corresponding page object class **Home.po.js.**.  Let's examine the DOM for the search box.  
 
   ![Image of Search](docImages/SearchInspection.PNG "Inspect Search box")
 
-  From the image above we can visually see that element has an input tag.  Since we are using protractor locators we need to find an angular directive that we can use. In this case, we can find an element by its **ng-model** angular directive within the input tag.  
+  From the image above we can visually see that the search box element has an input tag.  Since we are using protractor locators we need to find an angular directive that we can use. In this case, we can find an element by its **ng-model** angular directive within the input tag.  
   ```
   <input type="text" class="form-control inline ng-pristine ng-valid ng-valid-pattern ng-valid-minlength ng-valid-maxlength ng-touched" name="searchTerm" ng-minlength="1" ng-maxlength="10" ng-pattern="/^[a-zA-Z0-9]*$/" ng-model="home.search" id="searchTerm" placeholder="Food or trees">
   ```
-Therefore, we can write a test in our spec to validate that this element is presented
+Therefore, we can write the code to identify the search box in the page object class **Home.po.js.** as: 
 ```
- it('should have a back button', function() {
-    var searchBox = element(by.model('home.search'));
-    expect(searchBox.isPresent()).toBe(true);
-  });
-  ```
-  Alternatively, we can find this element by id or by css:
-  ```
-  it('should have a back button', function() {
-    var searchBox = element(by.id('searchTerm'));
-    expect(searchBox.isPresent()).toBe(true);
-  });
-  ```
+searchBox: {
+    get: function() {
+      return element(by.model('home.search'));
+    }
+  },
+```
+ Alternatively, we can find this element by id, name, or by css:
+```
+searchBox: {
+    get: function() {
+      return element(by.id('searchTerm'));
+    }
+  },
+```
+```
+searchBox: {
+    get: function() {
+      return element(by.name('searchTerm'));
+    }
+  },
+```
+```
+searchBox: {
+    get: function() {
+      return element(by.css('[placeholder="Food or trees"]'));
+    }
+  },
+```
+  Let's examine the DOM for the search button.  
+
+  ![Image of Search](docImages/SearchButtonInspection.PNG "Inspect Search button")
+
+From the image above we can visually see that the search button element has a button tag that does not contain an **ng-model** angular directive.  Therefore, we need to find other locators for which to identify this element.  What we do see is that there is an **id** and **ng-click** css attribute.  Therefore, we can identify the search button element using either one of the locators in our page object:
+```
+searchButton: {
+    get: function() {
+      return element(by.id('searchButton'));
+    }
+  },
+```
+```
+searchButton: {
+    get: function() {
+      return element(by.css('[ng-click="home.makeSearch()"]'));
+    }
+  },
+```
+##### Tests that DOM elements are present
+ We can now write tests in our spec to validate that these elements are presented
+```
+ it('should have a search box', function() {
+      var searchBox = homePage.searchBox;
+      expect(searchBox.isPresent()).toBe(true);
+    });
+```
+```
+ it('should have a search button', function() {
+      var searchButton = homePage.searchButton;
+      expect(searchButton.isPresent()).toBe(true);
+    });
+```
+#### Validate we receive results back from searching with valid terms
+##### Get the Results of the Search
+
+  As mentioned earlier, the application is design to accept only two valid terms as inputs: **Trees** and **Food**.  When the user searches one of these terms, the application will return results in a table below the search.  The main purpose of our next set of tests is to validate we get the results of searching the valid terms.  As a set of prerequisites, we need to first input the valid term into the search box, and then click the search button to get the results. The framework designed for the Protractor Example has already provided you with the operations to accomplish this.  Let's look at these operation in the page object class.  
   
-  ```
-  it('should have a back button', function() {
-    var searchBox = element(by.css('[placeholder="Food or trees"]'))
-    expect(searchBox.isPresent()).toBe(true);
-  });
-  ```
+  Since we already have identified the searchBox and searchButton objects in the page object class, we can use these objects to perform operations on them. To provide input into the searchBox, we have constructed the *enterSearch()* method to return the operation of sending a text value parameter to the element.  
+```
+enterSearch: {
+    value: function(keys) {
+      return this.searchBox.sendKeys(keys);
+    }
+  },
+```
+Likewise, we have constructed the *clickSearch()* method to return the click operation for the searchButton.  
+```
+clickSearch: {
+    value: function() {
+      return this.searchButton.click();
+    }
+  },
+```
+  Now, lets create a test that searches a valid term to return back results by using the method operation provided to you so far.  
+```
+it('should search for food and get answers', function() {
+      var term = 'food';
+      homePage.enterSearch(term);
+      homePage.clickSearch();
+      ......
+    }
+  );
+```
+![Results of Searching Food](docImages/SearchFood.PNG "Results of term Food")
 
+The test contructed so far will return back results from the term **food** entered.  But, we need our tests needs to ensure that results are found.  In order to do this, let's examine the table results.
 
+![Table results of Searching Food](docImages/FoodResults.PNG "Table Results of Food")
 
+Looking at the body of the table, where we find the actual content of the resulting search, we see that there is an **ng-repeat** angular directive that can be used to get all the results displayed in the table. As shown in the page object class, we can create an object that returns all results like this:
+
+```
+allResults: {
+    get: function() {
+      return element.all(by.repeater('bio in home.results'));
+    }
+  },
+```
+Using this object we can expand our test to assert whether results are empty or not.
+
+```
+it('should search for food and get answers', function() {
+      var term = 'food';
+      homePage.enterSearch(term);
+      homePage.clickSearch();
+      var allElements = homePage.allResults;
+      allElements.then(function(results) {
+            expect(results).not.toBeNull();
+      });
+    }
+  );
+```
+  
 
