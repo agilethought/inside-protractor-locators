@@ -240,8 +240,8 @@ Validations are also performed, based on simple rules, to handle invalid searche
 For the purpose of applying protractor locators, we are going to check the following:
 
 1. Verify that certain elements are presented on the page
-2. Verify we receive results back from searching with valid terms
-3. Verify we received validations when providing invalid inputs into the search box
+2. Validate we receive results back from searching with valid terms
+3. Validate we received validations when providing invalid inputs into the search box
 
 #### Verify that certain elements are presented on the page
 ##### Reading DOM Elements
@@ -317,10 +317,10 @@ searchButton: {
       expect(searchButton.isPresent()).toBe(true);
     });
 ```
-#### Verify we receive results back from searching with valid terms
+#### Validate we receive results back from searching with valid terms
 ##### Get the Results of the Search
 
-  As mentioned earlier, the application is design to accept only two valid terms as inputs: **Trees** and **Food**.  When the user searches one of these terms, the application will return results in a table below the search.  The main purpose of our next set of tests is to get the results of searching the valid terms.  As a set of prerequisites, we need to first input the valid term into the search box, and then click the search button to get the results. The framework designed for the Protractor Example has already provided you with the operations to accomplish this.  Let's look at these operation in the page object class.  
+  As mentioned earlier, the application is design to accept only two valid terms as inputs: **Trees** and **Food**.  When the user searches one of these terms, the application will return results in a table below the search.  The main purpose of our next set of tests is to validate we get the results of searching the valid terms.  As a set of prerequisites, we need to first input the valid term into the search box, and then click the search button to get the results. The framework designed for the Protractor Example has already provided you with the operations to accomplish this.  Let's look at these operation in the page object class.  
   
   Since we already have identified the searchBox and searchButton objects in the page object class, we can use these objects to perform operations on them. To provide input into the searchBox, we have constructed the *enterSearch()* method to return the operation of sending a text value parameter to the element.  
 ```
@@ -338,16 +338,44 @@ clickSearch: {
     }
   },
 ```
-  Now, lets create a test that searches a valid return and gets results by using the method operation provided to you so far.  
+  Now, lets create a test that searches a valid term to return back results by using the method operation provided to you so far.  
 ```
 it('should search for food and get answers', function() {
       var term = 'food';
       homePage.enterSearch(term);
       homePage.clickSearch();
+      ......
     }
   );
-......
 ```
-  
+![Results of Searching Food](docImages/SearchFood.PNG "Results of term Food")
+
+The test contructed so far will return back results from the term **food** entered.  But, we need our tests needs to ensure that results are found.  In order to do this, let's examine the table results.
+
+![Table results of Searching Food](docImages/FoodResults.PNG "Table Results of Food")
+
+Looking at the body of the table, where we find the actual content of the resulting search, we see that there is an **ng-repeat** angular directive that can be used to get all the results displayed in the table. As shown in the page object class, we can create an object that returns all results like this:
+
+```
+allResults: {
+    get: function() {
+      return element.all(by.repeater('bio in home.results'));
+    }
+  },
+```
+Using this object we can expand our test to assert whether results are empty or not.
+
+```
+it('should search for food and get answers', function() {
+      var term = 'food';
+      homePage.enterSearch(term);
+      homePage.clickSearch();
+      var allElements = homePage.allResults;
+      allElements.then(function(results) {
+            expect(results).not.toBeNull();
+      });
+    }
+  );
+```
   
 
